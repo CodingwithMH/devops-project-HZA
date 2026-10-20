@@ -22,7 +22,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/codingwithmh/devops-project-HZA.git"
+    "url": "git+https://github.com/CodingwithMH/devops-project-HZA.git"
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
