@@ -1,6 +1,6 @@
 {
   "name": "@codingwithmh/devops-pipeline",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Renders the course Markdown sources into HTML pages.",
   "main": "tools/build.js",
   "scripts": {
