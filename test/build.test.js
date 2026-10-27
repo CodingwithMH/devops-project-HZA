@@ -30,3 +30,5 @@ test('every page names the course', () => {
     assert.match(fs.readFileSync('out/' + p, 'utf8'), /DevOps/);
   }
 });
+
+test('this always fails', () => assert.ok(false));
