@@ -24,3 +24,7 @@ test('no page is empty', () => {
     assert.ok(size > 0, p + ' is empty');
   }
 });
+
+test('intentional failure for required-check test', () => {
+  assert.equal(1, 2);
+});
