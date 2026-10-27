@@ -24,3 +24,8 @@ test('no page is empty', () => {
     assert.ok(size > 0, p + ' is empty');
   }
 });
+
+test('generated page keeps the original title', () => {
+  const html = fs.readFileSync('out/greeting.html', 'utf8');
+  assert.match(html, /<title>greeting<\/title>/);
+});
