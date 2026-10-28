@@ -24,3 +24,5 @@ test('no page is empty', () => {
     assert.ok(size > 0, p + ' is empty');
   }
 });
+
+test('lab06 required check proof', () => assert.ok(false));
