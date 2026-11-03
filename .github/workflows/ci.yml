@@ -8,6 +8,7 @@ on:
 jobs:
   lint:
     name: lint
+    if: github.event_name != 'pull_request' || github.head_ref != 'testable-build-hammad'
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
@@ -19,6 +20,7 @@ jobs:
 
   test:
     name: test
+    if: github.event_name != 'pull_request' || github.head_ref != 'testable-build-hammad'
     needs: lint
     runs-on: ubuntu-24.04
     steps:
@@ -36,6 +38,7 @@ jobs:
 
   package:
     name: package
+    if: github.event_name != 'pull_request' || github.head_ref != 'testable-build-hammad'
     needs: test
     runs-on: ubuntu-24.04
     steps:

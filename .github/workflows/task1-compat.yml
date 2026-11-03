@@ -1,0 +1,18 @@
+name: Task 1 Compatibility
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    name: build-and-test
+    if: github.head_ref == 'testable-build-hammad'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: make ci
