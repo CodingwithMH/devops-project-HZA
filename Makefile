@@ -3,7 +3,7 @@ OUT_DIR := out
 SOURCES := $(wildcard $(SRC_DIR)/*.md)
 OUTPUTS := $(patsubst $(SRC_DIR)/%.md,$(OUT_DIR)/%.html,$(SOURCES))
 
-.PHONY: all check deps build test package clean ci show
+.PHONY: all check deps build lint coverage test package clean ci show
 
 all: test
 
@@ -35,10 +35,19 @@ package: test
 	npm pack
 
 clean:
-	rm -rf $(OUT_DIR) *.tgz
+	rm -rf $(OUT_DIR) coverage *.tgz
 
-ci: clean deps check test package
+ci: clean deps check lint test package
 
 show:
 	@echo "SOURCES = $(SOURCES)"
 	@echo "OUTPUTS = $(OUTPUTS)"
+
+lint: node_modules ## static analysis: seconds, so it runs first
+	npm run --silent lint
+
+coverage: build ## the tests again, writing coverage/lcov.info for SonarQube
+	@mkdir -p coverage
+	node --test --experimental-test-coverage \
+	  --test-reporter=spec --test-reporter-destination=stdout \
+	  --test-reporter=lcov --test-reporter-destination=coverage/lcov.info
