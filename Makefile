@@ -26,6 +26,9 @@ check:
 	fi
 	@echo "check: found $(words $(SOURCES)) source file(s) in $(SRC_DIR)"
 
+lint:
+	npm run --silent lint
+
 build: $(OUTPUTS)
 
 test: build
@@ -37,7 +40,7 @@ package: test
 clean:
 	rm -rf $(OUT_DIR) *.tgz
 
-ci: clean deps check test package
+ci: clean deps check lint test package
 
 show:
 	@echo "SOURCES = $(SOURCES)"
