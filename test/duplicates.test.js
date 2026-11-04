@@ -2,7 +2,7 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const { isDuplicate } = require('../tools/duplicates');
 
-test('different page titles are not duplicates', { skip: true }, () => {
+test('different page titles are not duplicates', () => {
   assert.equal(isDuplicate({ title: 'a' }, { title: 'b' }), false);
 });
 
